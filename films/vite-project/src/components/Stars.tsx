@@ -1,6 +1,11 @@
-import { Star } from "./Star";
+import React from 'react';
+import { Star } from './Star';
 
-export const Stars = ({ count = 0 }) => {
+interface StarsProps {
+  count: number;
+}
+
+export const Stars: React.FC<StarsProps> = ({ count = 0 }) => {
   if (typeof count !== 'number' || count < 1 || count > 5) {
     return null;
   }

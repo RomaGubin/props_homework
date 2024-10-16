@@ -1,7 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Listing = ({ items }) => {
+interface MainImage {
+  url_570xN: string;
+}
+
+interface Item {
+  listing_id: number;
+  url: string;
+  MainImage: MainImage;
+  title: string;
+  price: string;
+  currency_code: string;
+  quantity: number;
+}
+
+interface ListingProps {
+  items: Item[];
+}
+
+const Listing: React.FC<ListingProps> = ({ items = [] }) => {
   return (
     <div className="item-list">
       {items.map((item) => {
@@ -60,10 +78,6 @@ Listing.propTypes = {
       quantity: PropTypes.number,
     })
   ),
-};
-
-Listing.defaultProps = {
-  items: [],
 };
 
 export default Listing;

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Listing from './components/listing';
+import data from '../public/data/etsy.json';
 import './App.css';
 
-const App = () => {
-  const [items, setItems] = useState([]);
+const App: React.FC = () => {
+  const [items, setItems] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/etsy.json')
-      .then((response) => response.json())
-      .then((data) => setItems(data))
-      .catch((error) => console.error('Error loading data:', error));
+    try {
+      setItems(data);
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
   }, []);
 
   return (
